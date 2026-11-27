@@ -1,259 +1,218 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102a27">
-  <meta name="description" content="Văn phòng Luật sư Tiến Nam — đồng hành cùng cá nhân và doanh nghiệp bằng giải pháp pháp lý tận tâm, rõ ràng và trách nhiệm.">
-  <title>Văn phòng Luật sư Tiến Nam | Vững pháp lý, trọn an tâm</title>
-  <style>
-    :root {
-      --ink: #172622;
-      --muted: #64716c;
-      --green: #173c35;
-      --green-dark: #102a27;
-      --lime: #c6d79a;
-      --cream: #f7f6f0;
-      --white: #fff;
-      --line: #e5e7df;
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: "Inter", "Segoe UI", Arial, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-    body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--sans); line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
-    .topbar { background: var(--green-dark); color: #e3e9df; font-size: 12px; letter-spacing: .04em; }
-    .topbar-inner { display: flex; justify-content: space-between; gap: 20px; padding: 9px 0; }
-    .topbar a:hover { color: var(--lime); }
-    header { position: sticky; z-index: 20; top: 0; background: rgba(247,246,240,.96); border-bottom: 1px solid rgba(23,60,53,.1); backdrop-filter: blur(12px); }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .04em; }
-    .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #9cac80; color: var(--green); font: 20px var(--serif); }
-    .brand small { display: block; color: #758079; font-size: 9px; font-weight: 600; letter-spacing: .2em; }
-    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 600; }
-    .nav-links a:not(.button):hover { color: #54744a; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: var(--green); color: var(--white); border: 1px solid var(--green); font-size: 13px; font-weight: 700; transition: .2s ease; }
-    .button:hover { background: var(--green-dark); transform: translateY(-1px); }
-    .button-light { background: transparent; color: var(--white); border-color: rgba(255,255,255,.55); }
-    .button-light:hover { background: rgba(255,255,255,.1); }
-    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: transparent; color: var(--green); font-size: 22px; cursor: pointer; }
-    .hero { position: relative; overflow: hidden; min-height: 620px; display: flex; align-items: center; color: var(--white); background: var(--green-dark); }
-    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 78% 48%, rgba(198,215,154,.17), transparent 35%), linear-gradient(90deg, rgba(16,42,39,.2), transparent 80%); }
-    .hero::after { content: "§"; position: absolute; right: 8%; top: 50%; transform: translateY(-54%); color: rgba(198,215,154,.09); font: min(52vw, 600px)/1 var(--serif); pointer-events: none; }
-    .hero-content { position: relative; z-index: 1; width: min(680px, 100%); padding: 90px 0 100px; }
-    .eyebrow { margin: 0 0 18px; color: #82966d; font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
-    .hero .eyebrow { color: var(--lime); }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 700px; margin-bottom: 22px; font: 500 clamp(43px, 6vw, 76px)/1.08 var(--serif); letter-spacing: -.035em; }
-    h1 em { color: var(--lime); font-style: normal; }
-    .hero-copy { max-width: 530px; margin-bottom: 32px; color: #d0d9d3; font-size: 16px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero-note { margin-top: 48px; color: #aab8ad; font-size: 11px; letter-spacing: .1em; }
-    .section { padding: 100px 0; }
-    .section-heading { max-width: 650px; margin-bottom: 48px; }
-    h2 { margin-bottom: 15px; font: 500 clamp(34px, 4vw, 49px)/1.16 var(--serif); letter-spacing: -.025em; }
-    .lead { color: var(--muted); font-size: 16px; }
-    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
-    .about-aside { padding: 28px; background: #e9ebdf; border-left: 3px solid #91a66d; }
-    .about-aside strong { display: block; margin-bottom: 8px; font: 25px var(--serif); }
-    .about-aside p { margin: 0; color: var(--muted); font-size: 14px; }
-    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 56px; background: var(--line); border: 1px solid var(--line); }
-    .value { padding: 24px; background: var(--cream); }
-    .value span { color: #85966b; font: 22px var(--serif); }
-    .value h3 { margin: 12px 0 5px; font: 21px var(--serif); }
-    .value p { margin: 0; color: var(--muted); font-size: 13px; }
-    .services { background: #eeefe8; }
-    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .service-card { min-height: 235px; padding: 28px; background: var(--white); border: 1px solid #e8e9e2; transition: .2s; }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(23,38,34,.08); }
-    .service-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 26px; border: 1px solid #cbd4b6; color: var(--green); font: 20px var(--serif); }
-    .service-card h3 { margin-bottom: 9px; font: 22px var(--serif); }
-    .service-card p { margin: 0; color: var(--muted); font-size: 13px; }
-    .approach { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .steps { border-top: 1px solid var(--line); }
-    .step { display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-    .step-number { color: #87976d; font: 23px var(--serif); }
-    .step h3 { margin: 0 0 4px; font: 20px var(--serif); }
-    .step p { margin: 0; color: var(--muted); font-size: 13px; }
-    .quote { padding: 38px; background: var(--green); color: white; }
-    .quote-mark { color: var(--lime); font: 50px/.8 var(--serif); }
-    .quote blockquote { margin: 22px 0; font: 25px/1.45 var(--serif); }
-    .quote p { margin: 0; color: #c0cec3; font-size: 12px; }
-    .contact { padding: 85px 0; color: var(--white); background: var(--green-dark); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
-    .contact h2 { max-width: 520px; }
-    .contact .lead { color: #c4d0c7; }
-    .contact-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 32px; }
-    .contact-detail small { display: block; margin-bottom: 5px; color: var(--lime); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    .contact-detail a, .contact-detail span { color: #f2f4ef; font-size: 14px; }
-    .contact-card { padding: 28px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); }
-    .contact-card h3 { margin-bottom: 12px; font: 24px var(--serif); }
-    .contact-card p { margin-bottom: 20px; color: #c4d0c7; font-size: 13px; }
-    footer { padding: 22px 0; color: #b7c3ba; background: #0c211f; font-size: 11px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 18px; }
-    .footer-inner a { color: var(--lime); }
-    @media (max-width: 800px) {
-      .nav-links { display: none; position: absolute; top: 76px; left: 0; right: 0; padding: 20px 24px 24px; flex-direction: column; align-items: stretch; gap: 18px; background: var(--cream); border-bottom: 1px solid var(--line); }
-      .nav-links.open { display: flex; }
-      .nav-links .button { align-self: flex-start; }
-      .menu-toggle { display: block; }
-      .hero { min-height: 560px; }
-      .hero::after { right: -9%; opacity: .7; }
-      .about-grid, .approach, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-      .service-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-grid { gap: 30px; }
-    }
-    @media (max-width: 540px) {
-      .container { width: min(100% - 36px, 1120px); }
-      .topbar-inner { justify-content: center; }
-      .topbar-inner span:last-child { display: none; }
-      .section { padding: 72px 0; }
-      .hero-content { padding: 72px 0; }
-      .hero-copy { font-size: 15px; }
-      .values, .service-grid { grid-template-columns: 1fr; }
-      .value { padding: 20px; }
-      .service-card { min-height: 0; }
-      .contact-details { grid-template-columns: 1fr; gap: 17px; }
-      .footer-inner { flex-direction: column; }
-      .quote { padding: 28px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Văn phòng Luật sư Tiến Nam</title>
+<meta name="description" content="Văn phòng Luật sư Tiến Nam: tư vấn pháp luật, đại diện và bào chữa tại Việt Nam. Đặt lịch tư vấn trực tiếp hoặc qua điện thoại.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/*
+  CÁC CHỖ CẦN SỬA (tìm và thay bằng Ctrl+F):
+  0900 000 000 | email@example.com | Số 1, Đường ABC, Quận XYZ, Hà Nội
+  Số thẻ luật sư: [Điền số thẻ] | Đoàn Luật sư: [Điền tên Đoàn]
+  Zalo: https://zalo.me/0900000000
+*/
+:root{
+  --ink:#14211c; --forest:#1f3d34; --stone:#e8ece8; --paper:#fbfbf8;
+  --brass:#9a7330; --muted:#53615b; --line:#cfd6d1;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ink:#eef1ee; --forest:#2c5246; --stone:#1b2823; --paper:#101a16; --brass:#d1a85a; --muted:#a3b0aa; --line:#2f3f38}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.7 var(--sans)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0}
+h2{font-size:1.9rem;margin-bottom:.6rem}
+p{margin:0 0 1rem;max-width:62ch}
+header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:5}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1040px;margin:0 auto}
+.brand{font:700 1.15rem var(--serif);text-decoration:none;letter-spacing:.01em}
+.brand small{display:block;font:400 .75rem var(--sans);color:var(--muted)}
+nav{display:flex;gap:22px;flex-wrap:wrap;font-size:.93rem}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--forest);color:#fff;padding:12px 22px;border-radius:4px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font:600 1rem var(--sans)}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.hero{padding:84px 0 72px;background:var(--stone)}
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.6rem);max-width:17ch;font-weight:700}
+.hero p.lead{font-size:1.15rem;margin:22px 0 30px;color:var(--muted)}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero .note{margin-top:34px;font-size:.88rem;color:var(--muted);border-left:3px solid var(--brass);padding-left:14px;max-width:60ch}
+section{padding:72px 0}
+section+section{border-top:1px solid var(--line)}
+.areas{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;margin-top:28px}
+.areas div{padding:20px 0;border-top:1px solid var(--line)}
+.areas h3{font-size:1.2rem;margin-bottom:6px}
+.areas p{color:var(--muted);margin:0;font-size:.96rem}
+.about{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start}
+.portrait{aspect-ratio:4/5;background:var(--stone);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.9rem;text-align:center;padding:20px}
+dl{margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:.95rem}
+dt{color:var(--muted)} dd{margin:0}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:28px 0 0;display:grid;gap:0}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:18px 0;border-top:1px solid var(--line)}
+ol.steps li::before{content:counter(s);font:700 1.5rem var(--serif);color:var(--brass)}
+ol.steps strong{display:block;font-family:var(--serif);font-size:1.1rem}
+ol.steps span{color:var(--muted);font-size:.95rem}
+.posts{margin-top:24px}
+.posts a{display:block;padding:16px 0;border-top:1px solid var(--line);text-decoration:none}
+.posts a:hover strong{text-decoration:underline}
+.posts strong{font-family:var(--serif);font-size:1.1rem}
+.posts span{display:block;color:var(--muted);font-size:.88rem}
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+.contact address{font-style:normal;line-height:1.9}
+form{display:grid;gap:14px}
+label{font-size:.9rem;font-weight:500;display:grid;gap:6px}
+input,select,textarea{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink);width:100%}
+textarea{min-height:120px;resize:vertical}
+footer{background:var(--forest);color:#e9efec;padding:36px 0;font-size:.88rem}
+footer p{max-width:none;margin:0 0 6px;opacity:.9}
+@media (max-width:780px){
+  .bar{flex-direction:column;align-items:flex-start}
+  .areas,.about,.contact{grid-template-columns:1fr;gap:28px}
+  .hero{padding:56px 0 48px} section{padding:52px 0}
+}
+</style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>Tư vấn pháp lý tận tâm · Đồng hành dài lâu</span>
-      <span>Liên hệ: <a href="tel:+84911378889">091.137.8889</a></span>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top">Luật sư Tiến Nam<small>Văn phòng luật sư</small></a>
+    <nav aria-label="Menu chính">
+      <a href="#linh-vuc">Lĩnh vực</a>
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#quy-trinh">Quy trình</a>
+      <a href="#kien-thuc">Kiến thức pháp luật</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Giải quyết vấn đề pháp lý rõ ràng, đúng luật.</h1>
+      <p class="lead">Văn phòng Luật sư Tiến Nam tư vấn, đại diện và bảo vệ quyền lợi hợp pháp của cá nhân và doanh nghiệp.</p>
+      <div class="actions">
+        <a class="btn" href="#lien-he">Đặt lịch tư vấn</a>
+        <a class="btn ghost" href="tel:0900000000">Gọi 0900 000 000</a>
+      </div>
+      <p class="note">Nội dung trên website chỉ có tính chất tham khảo chung, không thay thế tư vấn pháp lý cho từng vụ việc cụ thể.</p>
     </div>
   </div>
-  <header>
-    <nav class="container nav" aria-label="Điều hướng chính">
-      <a class="brand" href="#trang-chu" aria-label="Văn phòng Luật sư Tiến Nam - Trang chủ">
-        <span class="brand-mark">AT</span>
-        <span>TIẾN NAM<small>VĂN PHÒNG LUẬT SƯ</small></span>
-      </a>
-      <button class="menu-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
-      <div class="nav-links">
-        <a href="#ve-chung-toi">Về chúng tôi</a>
-        <a href="#linh-vuc">Lĩnh vực</a>
-        <a href="#quy-trinh">Quy trình</a>
-        <a href="#lien-he" class="button">Đặt lịch tư vấn</a>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <section class="hero" id="trang-chu">
-      <div class="container">
-        <div class="hero-content">
-          <p class="eyebrow">Vững pháp lý · Trọn an tâm</p>
-          <h1>Hiểu luật để<br><em>bảo vệ điều</em> quan trọng.</h1>
-          <p class="hero-copy">Chúng tôi đồng hành cùng cá nhân và doanh nghiệp, cung cấp giải pháp pháp lý rõ ràng, thực tiễn và phù hợp với từng hoàn cảnh.</p>
-          <div class="hero-actions">
-            <a class="button" href="#lien-he">Trao đổi cùng luật sư <span aria-hidden="true">&nbsp;↗</span></a>
-            <a class="button button-light" href="#linh-vuc">Tìm hiểu dịch vụ</a>
-          </div>
-          <p class="hero-note">LẮNG NGHE KỸ · TƯ VẤN RÕ · HÀNH ĐỘNG CÓ TRÁCH NHIỆM</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="ve-chung-toi">
-      <div class="container">
-        <div class="about-grid">
-          <div class="section-heading">
-            <p class="eyebrow">Về chúng tôi</p>
-            <h2>Pháp lý vững vàng bắt đầu từ sự thấu hiểu.</h2>
-          </div>
-          <div>
-            <p class="lead">Mỗi vấn đề pháp lý đều gắn với một câu chuyện và những điều bạn muốn bảo vệ. Văn phòng Luật sư Tiến Nam đặt sự tận tâm, minh bạch và trách nhiệm làm nền tảng trong từng cuộc trao đổi.</p>
-            <div class="about-aside"><strong>Giải pháp phù hợp, không rập khuôn.</strong><p>Chúng tôi cùng bạn làm rõ tình huống, phân tích lựa chọn và thống nhất hướng xử lý trước khi triển khai.</p></div>
-          </div>
-        </div>
-        <div class="values">
-          <article class="value"><span>01</span><h3>Tận tâm</h3><p>Lắng nghe đầy đủ để hiểu đúng nhu cầu và ưu tiên của bạn.</p></article>
-          <article class="value"><span>02</span><h3>Minh bạch</h3><p>Trao đổi rõ ràng về phương án, phạm vi công việc và chi phí.</p></article>
-          <article class="value"><span>03</span><h3>Trách nhiệm</h3><p>Bảo mật thông tin và theo sát công việc trong phạm vi đã thống nhất.</p></article>
-        </div>
+  <section id="linh-vuc">
+    <div class="wrap">
+      <h2>Lĩnh vực hành nghề</h2>
+      <p>Chọn lĩnh vực gần nhất với vụ việc của bạn. Nếu chưa chắc, hãy liên hệ để được định hướng ban đầu.</p>
+      <div class="areas">
+        <div><h3>Dân sự và đất đai</h3><p>Tranh chấp hợp đồng, thừa kế, quyền sử dụng đất, nhà ở.</p></div>
+        <div><h3>Hôn nhân và gia đình</h3><p>Ly hôn, chia tài sản chung, quyền nuôi con, cấp dưỡng.</p></div>
+        <div><h3>Hình sự</h3><p>Bào chữa, bảo vệ quyền lợi bị hại, tư vấn trong giai đoạn điều tra.</p></div>
+        <div><h3>Doanh nghiệp và thương mại</h3><p>Thành lập doanh nghiệp, soạn thảo hợp đồng, giải quyết tranh chấp thương mại.</p></div>
+        <div><h3>Lao động</h3><p>Hợp đồng lao động, kỷ luật, chấm dứt hợp đồng, bảo hiểm xã hội.</p></div>
+        <div><h3>Thủ tục hành chính</h3><p>Khiếu nại, khởi kiện quyết định hành chính, hồ sơ giấy tờ pháp lý.</p></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section services" id="linh-vuc">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Lĩnh vực hoạt động</p>
-          <h2>Đồng hành qua những vấn đề pháp lý thường gặp.</h2>
-          <p class="lead">Phạm vi dịch vụ cụ thể sẽ được xác nhận sau khi trao đổi về hồ sơ và nhu cầu của bạn.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card"><span class="service-icon">§</span><h3>Doanh nghiệp &amp; thương mại</h3><p>Tư vấn thành lập, quản trị nội bộ, hợp đồng và các vấn đề trong hoạt động kinh doanh.</p></article>
-          <article class="service-card"><span class="service-icon">⌂</span><h3>Đất đai &amp; nhà ở</h3><p>Hỗ trợ rà soát hồ sơ, giao dịch, tranh chấp và các thủ tục liên quan đến bất động sản.</p></article>
-          <article class="service-card"><span class="service-icon">↔</span><h3>Dân sự &amp; hợp đồng</h3><p>Tư vấn giao dịch, nghĩa vụ dân sự, soạn thảo và rà soát thỏa thuận.</p></article>
-          <article class="service-card"><span class="service-icon">♡</span><h3>Hôn nhân &amp; gia đình</h3><p>Trao đổi về hôn nhân, tài sản, quyền nuôi con và các vấn đề gia đình.</p></article>
-          <article class="service-card"><span class="service-icon">▤</span><h3>Lao động</h3><p>Tư vấn quyền, nghĩa vụ trong quan hệ lao động và hỗ trợ xử lý bất đồng.</p></article>
-          <article class="service-card"><span class="service-icon">◎</span><h3>Giải quyết tranh chấp</h3><p>Đánh giá hồ sơ, đề xuất hướng giải quyết và đại diện theo phạm vi được ủy quyền.</p></article>
-        </div>
+  <section id="gioi-thieu">
+    <div class="wrap about">
+      <div class="portrait" role="img" aria-label="Chỗ đặt ảnh chân dung luật sư">Chỗ đặt ảnh chân dung<br>(thay bằng ảnh của luật sư)</div>
+      <div>
+        <h2>Luật sư Tiến Nam</h2>
+        <p>Viết 2 đến 3 câu giới thiệu: số năm kinh nghiệm, nhóm vụ việc đã xử lý, cách làm việc với khách hàng. Nên viết bằng giọng văn đơn giản, tránh thuật ngữ khó hiểu.</p>
+        <dl>
+          <dt>Thẻ luật sư</dt><dd>[Điền số thẻ]</dd>
+          <dt>Đoàn Luật sư</dt><dd>[Điền tên Đoàn]</dd>
+          <dt>Học vấn</dt><dd>[Điền trường, ngành, năm tốt nghiệp]</dd>
+          <dt>Ngôn ngữ</dt><dd>Tiếng Việt, [bổ sung nếu có]</dd>
+        </dl>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="quy-trinh">
-      <div class="container approach">
-        <div>
-          <p class="eyebrow">Cách chúng tôi làm việc</p>
-          <h2>Từng bước rõ ràng, để bạn chủ động quyết định.</h2>
-          <p class="lead">Bạn luôn được cập nhật về hướng xử lý và những việc cần chuẩn bị.</p>
-          <div class="steps">
-            <div class="step"><span class="step-number">01</span><div><h3>Lắng nghe &amp; tiếp nhận</h3><p>Trao đổi ban đầu để hiểu sự việc, mục tiêu và mốc thời gian.</p></div></div>
-            <div class="step"><span class="step-number">02</span><div><h3>Đánh giá &amp; đề xuất</h3><p>Rà soát thông tin, làm rõ lựa chọn và thống nhất phạm vi hỗ trợ.</p></div></div>
-            <div class="step"><span class="step-number">03</span><div><h3>Triển khai &amp; cập nhật</h3><p>Thực hiện công việc theo thỏa thuận và thông tin tiến độ phù hợp.</p></div></div>
-          </div>
-        </div>
-        <aside class="quote"><span class="quote-mark">“</span><blockquote>Một lời tư vấn tốt giúp bạn hiểu rõ lựa chọn của mình trước khi bước tiếp.</blockquote><p>VĂN PHÒNG LUẬT SƯ AN TÂM</p></aside>
-      </div>
-    </section>
+  <section id="quy-trinh">
+    <div class="wrap">
+      <h2>Quy trình làm việc</h2>
+      <p>Bốn bước để bạn biết rõ mình đang ở đâu trong vụ việc.</p>
+      <ol class="steps">
+        <li><div><strong>Trao đổi ban đầu</strong><span>Bạn kể vụ việc và gửi giấy tờ liên quan. Luật sư đánh giá sơ bộ khả năng giải quyết.</span></div></li>
+        <li><div><strong>Thống nhất phương án và phí</strong><span>Hai bên ký hợp đồng dịch vụ pháp lý ghi rõ phạm vi công việc và mức phí.</span></div></li>
+        <li><div><strong>Thực hiện</strong><span>Chuẩn bị hồ sơ, làm việc với cơ quan có thẩm quyền, tham gia tố tụng nếu cần.</span></div></li>
+        <li><div><strong>Cập nhật và hoàn tất</strong><span>Bạn được thông tin về tiến độ ở từng mốc quan trọng cho đến khi kết thúc vụ việc.</span></div></li>
+      </ol>
+    </div>
+  </section>
 
-    <section class="contact" id="lien-he">
-      <div class="container contact-grid">
-        <div>
-          <p class="eyebrow">Liên hệ</p>
-          <h2>Bắt đầu bằng một cuộc trò chuyện.</h2>
-          <p class="lead">Hãy chia sẻ ngắn gọn vấn đề bạn đang gặp phải. Chúng tôi sẽ liên hệ lại để trao đổi bước tiếp theo.</p>
-          <div class="contact-details">
-            <div class="contact-detail"><small>Điện thoại</small><a href="tel:+84911378889">091.137.8889</a></div>
-            <div class="contact-detail"><small>Email</small><a href="mailto:LSTienNam@gmail.com">LSTienNam@gmail.com</a></div>
-            <div class="contact-detail"><small>Địa chỉ</small><a href="https://www.google.com/maps/search/?api=1&amp;query=510%20%C4%90%C3%AA%20La%20Th%C3%A0nh%2C%20Gi%E1%BA%A3ng%20V%C3%B5%2C%20H%C3%A0%20N%E1%BB%99i" target="_blank" rel="noopener noreferrer">Số 510 Đê La Thành, P. Giảng Võ, Tp. Hà Nội ↗</a></div>
-            <div class="contact-detail"><small>Giờ làm việc</small><span>Thứ 2 – Thứ 6 · 8:00 – 17:00</span></div>
-          </div>
-        </div>
-        <div class="contact-card">
-          <h3>Bạn cần chuẩn bị gì?</h3>
-          <p>Mô tả ngắn gọn sự việc, thời gian liên quan và mục tiêu bạn mong muốn. Nếu thuận tiện, hãy chuẩn bị các giấy tờ liên quan để buổi trao đổi hiệu quả hơn.</p>
-          <a class="button" href="mailto:LSTienNam@gmail.com?subject=Dat%20lich%20tu%20van%20phap%20ly">Gửi yêu cầu tư vấn <span aria-hidden="true">&nbsp;↗</span></a>
-        </div>
+  <section id="kien-thuc">
+    <div class="wrap">
+      <h2>Kiến thức pháp luật</h2>
+      <p>Các bài viết giải thích quy định theo cách dễ hiểu. Thay các mục dưới đây bằng bài thật của bạn.</p>
+      <div class="posts">
+        <a href="#"><strong>Thủ tục ly hôn đơn phương gồm những bước nào?</strong><span>Hôn nhân và gia đình · Cập nhật [ngày/tháng/năm]</span></a>
+        <a href="#"><strong>Hồ sơ cần chuẩn bị khi khởi kiện tranh chấp đất đai</strong><span>Dân sự và đất đai · Cập nhật [ngày/tháng/năm]</span></a>
+        <a href="#"><strong>Bị công ty đơn phương chấm dứt hợp đồng lao động thì làm gì?</strong><span>Lao động · Cập nhật [ngày/tháng/năm]</span></a>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner"><span>© <span id="year"></span> Văn phòng Luật sư Tiến Nam. Bảo lưu mọi quyền.</span><span>Thông tin trên website chỉ mang tính giới thiệu, không thay thế ý kiến tư vấn pháp lý cho vụ việc cụ thể.</span></div>
-  </footer>
-  <script>
-    const menuButton = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.nav-links');
-    menuButton.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.setAttribute('aria-label', isOpen ? 'Đóng menu' : 'Mở menu');
-      menuButton.textContent = isOpen ? '×' : '☰';
-    });
-    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      menu.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.setAttribute('aria-label', 'Mở menu');
-      menuButton.textContent = '☰';
-    }));
-    document.querySelector('#year').textContent = new Date().getFullYear();
-  </script>
+    </div>
+  </section>
+
+  <section id="lien-he">
+    <div class="wrap contact">
+      <div>
+        <h2>Liên hệ</h2>
+        <address>
+          Số 1, Đường ABC, Quận XYZ, Hà Nội<br>
+          Điện thoại: <a href="tel:0900000000">0900 000 000</a><br>
+          Zalo: <a href="https://zalo.me/0900000000" rel="noopener">0900 000 000</a><br>
+          Email: <a href="mailto:email@example.com">email@example.com</a><br>
+          Giờ làm việc: Thứ Hai đến Thứ Sáu, 8:30 đến 17:30
+        </address>
+      </div>
+      <form id="f" aria-label="Đặt lịch tư vấn">
+        <label>Họ và tên <input name="ten" required autocomplete="name"></label>
+        <label>Số điện thoại <input name="sdt" type="tel" required autocomplete="tel"></label>
+        <label>Lĩnh vực cần tư vấn
+          <select name="lv">
+            <option>Dân sự và đất đai</option><option>Hôn nhân và gia đình</option><option>Hình sự</option>
+            <option>Doanh nghiệp và thương mại</option><option>Lao động</option><option>Thủ tục hành chính</option><option>Khác</option>
+          </select>
+        </label>
+        <label>Mô tả ngắn vụ việc <textarea name="nd"></textarea></label>
+        <button class="btn" type="submit">Gửi yêu cầu tư vấn</button>
+        <p style="font-size:.85rem;color:var(--muted);margin:0">Bấm gửi sẽ mở ứng dụng email của bạn với nội dung đã điền. Không gửi thông tin nhạy cảm qua form này.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Văn phòng Luật sư Tiến Nam</strong> · Số 1, Đường ABC, Quận XYZ, Hà Nội</p>
+    <p>Thẻ luật sư số [Điền số thẻ], Đoàn Luật sư [Điền tên Đoàn]. Thông tin trên website chỉ mang tính tham khảo.</p>
+    <p>© <span id="y"></span> Văn phòng Luật sư Tiến Nam</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+document.getElementById("f").addEventListener("submit", function(e){
+  e.preventDefault();
+  var d = new FormData(e.target);
+  var body = "Họ tên: " + d.get("ten") + "\nSĐT: " + d.get("sdt") + "\nLĩnh vực: " + d.get("lv") + "\n\n" + d.get("nd");
+  location.href = "mailto:email@example.com?subject=" + encodeURIComponent("Đặt lịch tư vấn - " + d.get("ten")) + "&body=" + encodeURIComponent(body);
+});
+</script>
 </body>
 </html>
